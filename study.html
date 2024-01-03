@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>研究</title>
+    <link rel="stylesheet" type="text/css" href="study-style.css">
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" }},
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { matchFontHeight: false },
+        displayAlign: "left",
+        displayIndent: "2em"
+      });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>英語発音学習のためのアクセント変換技術を応用した</h1>
+        <h1>学習者の話者性を持つお手本音声の生成</h1>
+    </header>
+    <div class="introduction">
+        <div class="background">
+            <h2>背景</h2>
+            <p>
+                令和5年実施の全国学力調査の結果
+            </p>
+            <p>
+                ⇒ 中学3年生の「話す」の正答率は12.4%, 6割の生徒が0点
+            </p>
+            <ul>
+                <li>「<span>話す</span>」ことについて生徒一人ひとりに適切な指導を行うことは非常に困難</li>
+                <li><span>発音</span>指導は重要な教授項目</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <h2>問題点</h2>
+            <ul>
+                <li>ネイティブのお手本音声は<span>声質</span>が大きく異なり，初学者には発音の聞き取りが困難</li>
+                <li><span>フィードバック</span>が得られない</li>
+            </ul>
+        </div>
+    </div>
+    <div class="purpose">
+        <h2>目的</h2>
+        <ul>
+            <li>英語発音学習補助ツールの提案</li>
+            <li>アクセント変換をした学習者の話者性を持つ音声の生成</li>
+        </ul>
+    </div>
+
+    <div class="method">
+        <h2>
+            手法
+        </h2>
+        <p>
+            人の話す音声は，話者情報・言語情報等が含まれる。ます、学習者の発話音声から言語情報のみを抽出する。このカタカナ発音で構成されてる言語情報をネイティブ発音を持つ言語情報へアクセント変換を行う。そして，話者情報を加え音声として出力することで学習者の話者性を持つお手本音声を生成する。以下に簡略化した音声生成プロセスを示す。
+        </p>
+        <img src="./asset/model.png" style="width: 70%; height: auto;"/>
+        <p>本研究ではアクセント変換に着目し研究を行った。その他の部分は既存の学習済みのモデルを用いて実験を行った。</p>
+        <p>先行研究ではアクセント変換を行うモデルはText to SpeechモデルであるTacotron2をベースとしたモデルであったが、本研究ではTransformerベースのモデルへ変更し実験を行った。</p>
+        <img src="./asset/train_process.png" width="60%" height="60%"/>
+    </div>
+    <!-- result section -->
+    <div class="result">
+        <div class="explanation">
+            <h2>評価指標</h2>
+            <div class="eval">
+                <h3>
+                    \begin{equation}
+                        score = \frac{1}{n}\sum\limits_{i=1}^n \frac{正しく変換された単語数}{文章i中の単語数}
+                    \end{equation}
+                </h3>
+            </div>
+            <p>アラビア語・マンダリンを母国語として持つ非ネイティブ2名と日本語を母国語として持つ非ネイティブ2名による読み上げ音声を50文を用いて評価を行った。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>母国語</th>
+                        <th>ファインチューニング前</th>
+                        <th>ファインチューニング後</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arabic</td>
+                        <td>0.90</td>
+                        <td>0.79</td>
+                    </tr>
+                    <tr>
+                        <td>Mandarin</td>
+                        <td>0.89</td>
+                        <td>0.83</td>
+                    </tr>
+                    <tr>
+                        <td>Japanese(speaker1)</td>
+                        <td>0.63</td>
+                        <td>0.81</td>
+                    </tr>
+                    <tr>
+                        <td>Japanese(speaker2)</td>
+                        <td>0.65</td>
+                        <td>0.77</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <h1>変換結果</h1>
+            <h3>結果1 : </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Speaker</th>
+                        <th>Text</th>
+                        <th>Input Speech</th>
+                        <th>Accent Converted Speech</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Japanese(speaker1)</td>
+                        <td>He stopped and Philip nodded at the horrified question in his eyes.</td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result1_input_Y.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result1_Y.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        
+                    </tr>
+                    <!-- Repeat rows for each set of audio samples -->
+                    <tr>
+                        <td>Japanese(speaker2)</td>
+                        <td>He stopped and Philip nodded at the horrified question in his eyes.</td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result1_input_M.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result1_M.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <h3>結果2 :</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Speaker</th>
+                        <th>Text</th>
+                        <th>Input Speech</th>
+                        <th>Accent Converted Speech</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Japanese(speaker1)</td>
+                        <td>It seemed nearer to him since he had seen and talked with Gregson.</td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result2_input_Y.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result2_Y.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        
+                    </tr>
+                    <!-- Repeat rows for each set of audio samples -->
+                    <tr>
+                        <td>Japanese(speaker2)</td>
+                        <td>It seemed nearer to him since he had seen and talked with Gregson.</td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result2_input_M.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        <td>
+                            <audio controls>
+                                <source src="./asset/wav/result2_M.wav" type="audio/wav">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- consideration section -->
+    <div class="consideration">
+        <h2>考察</h2>
+        <p>
+            ファインチューニングに用いた日本語話者の発音と推論時の入力音声の発音が大きく異なる単語含まれると適切に推論できないと考えられる。
+        </p>
+        <p>⇒ 学習データの発音と大きく異なる単語は未知語として扱われ、ノイズとなっている可能性がある。</p>
+        <p>⇒ 学習データに複数の日本人話者を含めることにより，様々なカタカナ発音のパターンを学習することで変換精度の向上が期待できる.。</p>
+    </div>
+
+    <!-- challenge section -->
+    <div class="challenge">
+        <h2>今後の課題</h2>
+        <ul>
+            <li>網羅的にカタカナ発音に適用するための日本語話者の英語読み上げ音声データの拡充</li>
+            <li>英語読み上げ音声からの発音記号抽出</li>
+            <li>話者性を保った変換の精度向上</li>
+        </ul>
+    </div>
+    </section>
+    <!-- about study -->
+    <div class="about-study">
+
+
+    </div>
+    <!-- story-of-study section -->
+    <div class="box">
+        <h2 style="font-size: 30px; padding-left: 60px;">研究活動を振り返って</h2>
+        <div class="trigger">
+            <h2>この研究に取り組んだ動機</h2>
+            <p>
+                この研究に取り組んだ動機は、日本の英語教育に疑問を抱いており、変革に繋がることに取り組みたいと考えていたからです。
+            </p>
+            <p>
+                18歳の夏にハワイでの語学留学を経験したことがきっかけで、日本の学生が受験のためだけに英語を学んでいる実態に問題意識を持つようになりました。
+                中学生から本格的に英語を学び始め、高校・大学でも英語を学んでいるのに全く話せるようにならない日本の英語教育はよくないと思うようになりました。
+            </p>
+            <p>特に、言語を学ぶ上で基礎となる「発音」の指導が不十分であると感じていました。また、小学校の速い段階から英語教育を始め、文法や単語の詰め込むように英語教育改革がなされる昨今、本当にこれが正しいことなのか疑問を持っていました。</p>
+            <p>そのような現状を変えたいという想いから本研究に取り組みました。</p>
+        </div>
+        <div class="story-of-study">
+            <h2>
+                研究で直面した課題
+            </h2>
+            <p>
+                研究ではDNNモデルの学習のためにGPUを使用して学習をする必要がありました。当初のモデルでは使用するメモリサイズが大きく研究環境では上手く学習が進まないという課題がありました。また一回の学習が１ヶ月ほど掛かるという課題がありました。
+            </p>
+
+            <p>この問題を解決する方法を模索した結果、従来研究のモデルではなく、異なるモデルを参考・応用しネットワーク構造を変更することで学習する際に使用するメモリ量を少なくし解決しました。</p>
+            
+            <p>
+                その結果、学習時間は４日程度まで短縮し、うまく学習が進まなかった課題も解決できました。
+            </p>
+        </div>
+        <div class="presentation">
+            <h2>学会発表での評価</h2>
+            <p>
+                11月末に大学コンソーシアム富山で開催された電子情報通信学会マルチメディア情報ハイディング・エンリッチメント研究会(EMM)、応用音響研究会(EA)および日本音響学会聴覚研究会(ASJ-H)の3研究会合同研究会においてEMM研究会優秀ポスター賞を受賞しました。
+            </p>
+            <p>
+                ポスター発表を通して、多角的な視点からの議論を行いました。その中で、「日本人にとってはネイティブ発音の習得は現実的ではない」という議論がありました。
+                英語はコミュニケーションを取るための道具であり、伝わる明瞭性の高い発音の習得が必要であることの気づきになりました。研究の目的・目標の見直しに繋がる有意義な議論ができたと感じています。
+            </p>
+        </div>
+        <div class="waht-i-learned">
+            <h2>研究と通して学んだこと</h2>
+            <p>
+                自分の取り組みを他者と共有・議論を行い多角的な視点を持つことが重要であることを学びました。
+                自分自身の研究として個人で完結していた研究を学会発表という場で様々な人と共有することで、これまでになかった視点から議論することができ、新たな方向性を見出せました。
+            </p>
+
+            <p>
+                研究だけに留まらず、私生活や今後の人生においても他者とコミュニケーションを図り共有することで、多角的な視点を持ち正解のない問いに向き合い、活かしていきたいと思います。
+            </p>
+        </div>
+    </div>
+    <footer>
+        <p>© 2023 Rei Hamakawa</p>
+    </footer>
+</body>
+</html>

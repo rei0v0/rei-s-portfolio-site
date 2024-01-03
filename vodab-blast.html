@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vocab Blast</title>
+    <link rel="stylesheet" href="./vocab-blast-style.css">
+</head>
+<body>
+    <div class="hero">
+        <nav>
+            <h2 class="logo">Vocab Blast</h2>
+            <ul>
+                <li><a href="#about-this-app">Vocab Blastについて</a></li>
+                <li><a href="#trigger">開発のきっかけ</a></li>
+                <li><a href="#points">工夫した点</a></li>
+                <li><a href="#points-for-reflection">反省点</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="app-image">
+        <img src="./asset/app1-image.PNG"/>
+    </div>
+    <div class="about-this-app" id="about-this-app">
+        <div class="explation">
+            <h2>Vocab Blast</h2>
+            <p>英語学習のためのアプリ!</p>
+            <p>フラッシュカード・選択問題・ChatGPTによる英作文添削</p>
+        </div>
+        <div class="container">
+            <img src="./asset/app1-screenshot.PNG"/>
+        </div>
+    </div>
+    <div class="function1">
+        <div class="explanation">
+            <h2>Vocab Blast</h2>
+            <p>英語学習のためのアプリ!</p>
+            <p>フラッシュカード・選択問題・ChatGPTによる英作文添削</p>
+        </div>
+        <div class="container">
+            <video src="./asset/video/video1.mov" width="40%" height="auto" autoplay muted loop playsinline></video>
+            <video src="./asset/video/video2.mov" width="40%" height="auto" autoplay muted loop playsinline></video>
+        </div>
+    </div>
+    <div class="function2">
+        <div class="container">
+            <video src="./asset/video/video3.mov" width="300" height="700" autoplay muted loop playsinline></video>
+        </div>
+        <div class="explanation">
+            <h2>英作文添削</h2>
+            <p>ChatGPTにより、自動で英作文の添削が行えます。不適切な表現の指摘・より自然な表現の提案を行ってくれます。</p>
+            <p>修正箇所はその理由が示され、学習の英作文の補助となります。</p>
+        </div>
+        
+    </div>
+    <div class="review">
+        <div class="trigger" id="trigger">
+            <h2>開発のきっかけ</h2>
+            <p>このアプリを開発したきっかけは、自分自身が欲しいと思う機能を持つ英語学習アプリがなかったからです。</p>
+            <p>隙間時間に手軽に使用できる英語学習アプリは多くありますが、どこか使いずらいと感じる点がありました。</p>
+            
+            <ul>
+                <li>単語一覧が見にくい</li>
+                <li>熟語の学習がしずらい</li>
+                <li>ライティングの勉強ができない</li>
+            </ul>
+            <p>このような不満を感じることが多くありました。そこで、これらを解決するようなアプリを開発したいと思いました。</p>
+        
+        </div>
+        <div class="points" id="points">
+            <h2>工夫した点</h2>
+            <p>英単語の一覧を表示する際に、赤シート機能としてフローティングボタンを設置し、日本語訳を表示・非表示できるようにしました。</p>
+            <p>英作文の添削機能として、ChatGPTへのプロンプトを工夫し、小学生・中学生・高校生・大学生別でレベルを設定できるようにしました。</p>
+        </div>
+        <div class="points-for-reflection" id="points-for-reflection">
+            <h2>
+                反省点
+            </h2>
+            <p>主要機能が3つ程あり、何ができるアプリなのか分かりずらいものになってしまいました。</p>
+            <p>主要機能を1つ絞り、シンプルなアプリにすべきだったと感じています。</p>
+            <p>使いやすいアプリの特徴はどのようなものか観察してみると、主要機能が1つであり、その機能をサポートする形で細々な機能があるように感じました。</p>
+    
+            <p>それを踏まえて、今後、英作文添削の機能・単語学習の機能などそれぞれの機能ごとに独立したアプリの開発を検討しています。</p>
+        </div>
+    </div> 
+    <script>
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+    
+                const navHeight = document.querySelector('.hero').offsetHeight;
+    
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - navHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

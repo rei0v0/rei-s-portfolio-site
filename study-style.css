@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-image: url("./asset/background_image.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background: #000;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+
+.introduction ul li span {
+    color: red;
+    font-weight: bold;
+}
+
+.background{
+    width: 80%;
+    height: auto;
+    margin-left: 50px;
+}
+
+.problem,.purpose{
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.method {
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.explanation{
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; /* Add this line to your table styling */
+}
+th, td {
+    border: 1px solid #aaa;
+    padding: 10px;
+    text-align: center;
+    word-break: break-word; /* Prevents text from overflowing */
+}
+audio {
+    width: 100%; /* Audio player will fill the cell */
+    max-width: 250px; /* Adjust as needed */
+}
+
+section {
+    padding: 1rem 20px;
+    margin: 20px 0;
+}
+
+.consideration {
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.challenge{
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+
+.box {
+    width: 100%;
+    height: auto;
+    background-color:rgba(220, 220, 220, 0.314);
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.trigger, .story-of-study, .presentation, .waht-i-learned {
+    width: 70%;
+    height: auto;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    opacity: 1.0;
+    background-color:rgba(255, 204, 150, 0.726);
+    border-radius: 30px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.trigger h2 , .story-of-study h2, .presentation h2, .waht-i-learned h2{
+    padding: 3px 0 3px 10px;
+    border-left: 4px solid #ffa600;
+}
+
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #333;
+    color: #fff;
+}

@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #000;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* header {
+    background: #fff;
+    color: #000;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+} */
+.hero {
+    height: 100px;
+    width: 100%;
+    background-color: #fff;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 45px 8% 0 8%;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0 -10px 20px 0 gray;
+}
+.logo {
+    color: black;
+    font-size:  35px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 10px 25px;
+}
+
+nav ul li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+
+}
+.app-image {
+    width: 100%;
+    height: auto;
+    background-image: url("./asset/app1-background.PNG");
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.app-image img {
+    
+    margin: auto;
+    display: block;
+    width: 30%;    /* 横幅を割合で指定 */
+    height: auto;  
+    
+}
+
+.about-this-app {
+    width: 100%;
+    padding: 100px 0;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+.explation h2 {
+    font-size: 40px;
+}
+
+.container img {
+    margin: auto;
+    display: block;
+    width: 50%;    /* 横幅を割合で指定 */
+    height: auto;
+    /* background-color: green; */
+}
+.function2 {
+    background-color: #f9f9f9;
+}
+
+.function1, .function2 {
+    width: 100%;
+    padding: 100px 0;
+    height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    /* flex-direction: column; */
+    text-align: center;
+    /* background-color: red; */
+}
+
+.function1 .container, .function1 .explanation, .function2 .container, .function2 .explanation {
+    width: 48%; /* 幅を45%に調整 */
+    /* background-color: blue; */
+}
+.function1 .container {
+    margin-right: 4%;
+    
+}
+.function1 .explanation {
+    margin-left: 4%;    
+}
+
+.function2 .container {
+    margin-left: 4%;
+}
+
+.function2 .explanation {
+    margin-right: 4%;
+}
+
+.explanation p {
+    max-width: 50%; /* テキストの最大幅を設定 */
+    margin: 0 auto; /* 中央揃え */
+    font-size: 25px;
+}
+
+.function1 .container img , .function2 .container img {
+    margin: auto;
+    display: block;
+    width: 80%;    /* 横幅を割合で指定 */
+    height: auto;
+} 
+
+section {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#features, #testimonials {
+    background: #f4f4f4;
+}
+
+
+.review {
+    width: 100%;
+    height: auto;
+    padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 30px;
+}
+.trigger, .points {
+    width: 90%;
+    height: auto;
+    margin-bottom: 80px;
+}
+.points-for-reflection{
+    width: 90%;
+    height: auto;
+}
+
+.trigger h2, .points h2, .points-for-reflection h2 {
+    margin-bottom: 10px;
+}
+
+
+.trigger p, .points p, .points-for-reflection p {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.trigger ul {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.trigger h2, .points h2, .points-for-reflection h2 {
+    font-size: 35px;
+    padding: 3px 0 3px 10px;
+    border-left: 5px solid #95f8d7;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+}
